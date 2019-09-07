@@ -6,4 +6,6 @@ select.md : contains simple exercises to practice the select query.
 
 restrincting.md : contains exercises to practice the restrincting and sorting clauses like "where" or "like"...
 
+functions.md : contains exercises to practice the group by clause.
+
 

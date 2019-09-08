@@ -57,4 +57,76 @@
    select count(*), department_name from employees e join departments d on (e.department_id = d.department_id) group by e.department_id;
    ```
 
+7. Write a query to find the employee ID, job title, number of days between ending date and starting date for all jobs in department 90.
+
+   *Solution:*
    
+   ```
+   select employee_id, job_id, end_date - start_date 
+   from job_history
+   natural join jobs
+   where department_id = 90;
+   ```
+   
+8. Write a query to display the department ID and name and first name of manager.
+
+   *Solution:*
+   
+   ```
+   select d.department_id, d.first_name , d.last_name 
+   from departments as d
+   inner join employees e 
+   on (d.manager_id = e.employee_id);
+   ```
+   
+9. Write a query to display the department name, manager name, and city.
+
+   *Solution:*
+   
+   ```
+   select d.department_name, e.first_name, e.last_name, l.city
+   from employees as e
+   inner join departments as d on (e.employee_id = d.manager_id)
+   inner join locations as l on (d.location_id = l.location_id);
+   ```
+   
+10. Write a query to display the job title and average salary of employees
+
+    *Solution:*
+    
+    ```
+    select job_title, avg(salary)
+    from employees 
+    join jobs
+    using (job_id)
+    group by job_id;
+    ```
+    
+11. Write a query to display job title, employee name, and the difference between salary of the employee and minimum salary for the job.
+
+   *Solution:*
+   
+   ```
+   select job_title, e1.first_name, e1.last_name, e1.salary - (select min(salary) from employees as e2 where e2.job_id = e1.job_id)
+   from employees as e1
+   join jobs as j
+   on (e1.job_id = j.job_id); 
+   ```
+   ```
+   select job_title, first_name, last_name, salary - min_salary
+   from employees
+   natural join jobs;
+   ```
+   
+12. Write a query to display the job history that were done by any employee who is currently drawing more than 10000 of salary.
+
+    *Solution:*
+    
+    ```
+    ```
+
+
+   
+
+
+
